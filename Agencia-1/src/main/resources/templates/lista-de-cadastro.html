@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Cadastros</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    </style>
+</head>
+<body>
+	
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/}">Agencia Viagens</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/formulario-usuario}">Cadastro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/lista-de-cadastro}">Lista de Clientes e Viagens</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="container mt-4">
+        <h2>Lista de Cadastros</h2>
+
+        <div class="table-responsive">
+            <h3>Usuários</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <!-- Outros campos do usuário, se necessário -->
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iteração pelos usuários -->
+                    <tr th:each="usuario : ${listaUsuarios}">
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td>
+                            <a th:href="@{'/editar-usuario/' + ${usuario.id}}">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="table-responsive">
+            <h3>Viagens</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+	                    <th>ID</th>
+	                    <th>Destino</th>
+	                    <th>Data de Partida</th>
+	                    <th>Data de Retorno</th>
+	                    <th>Preço</th>
+	                    <th>Vagas Disponíveis</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iteração pelas viagens -->
+                    <tr th:each="viagem : ${listaViagens}">
+					<td th:text="${viagem.id}"></td>
+                    <td th:text="${viagem.destino}"></td>
+                    <td th:text="${viagem.dataPartida}"></td>
+                    <td th:text="${viagem.dataRetorno}"></td>
+                    <td th:text="${viagem.preco}"></td>
+                    <td th:text="${viagem.vagasDisponiveis}"></td>
+                        <td>
+                            <a th:href="@{'/editar-viagem/' + ${viagem.id}}">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

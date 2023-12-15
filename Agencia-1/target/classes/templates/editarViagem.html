@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Viagem</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/}">Agencia Viagens</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/formulario-usuario}">Cadastro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/lista-de-cadastro}">Lista de Clientes e Viagens</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+	
+	<div class="container mt-4">	
+	    <h1>Editar Viagem</h1>
+		<form th:action="@{'/atualizar-viagem/' + ${viagem.id}}" th:object="${viagem}" method="post">
+			<label for="destino">Destino:</label>		
+		    <input type="text" class="form-control mb-3" th:field="*{destino}" placeholder="Destino da Viagem" required />
+		    
+		    <label for="dataPartida">Data de Partida:</label>
+		    <input type="date" class="form-control mb-3" th:field="*{dataPartida}" placeholder="Data de Partida" required />
+		    
+		    <label for="dataRetorno">Data de Retorno:</label>
+		    <input type="date" class="form-control mb-3" th:field="*{dataRetorno}" placeholder="Data de Retorno" required />
+		    
+		    <label for="preco">Preço:</label>
+		    <input type="text" class="form-control mb-3" th:field="*{preco}" placeholder="Preço" required />
+		    
+		    <label for="vagasDisponiveis">Vagas Disponíveis:</label>
+		    <input type="number" class="form-control mb-3" th:field="*{vagasDisponiveis}" placeholder="Vagas Disponíveis" required />
+		
+		    <button type="submit" class="btn btn-primary">Atualizar Viagem</button>
+		</form>
+
+	    
+ 
+	</div>
+</body>
+</html>
